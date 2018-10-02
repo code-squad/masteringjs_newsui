@@ -45,7 +45,7 @@ a { text-decoration: none}
 
 .mainArea {
 	clear:both;
-	overflow: auto;
+	overflow: hidden;
 }
 
 .newsList {
@@ -61,6 +61,7 @@ a { text-decoration: none}
 .newsNavigation{
 	width:200px;
 	border-right: 0;
+	overflow-y:auto;
 }
 
 .newsNavigation li {
@@ -72,6 +73,8 @@ a { text-decoration: none}
 .newsNavigation a:hover {
 	text-decoration: underline;
 }
+.newsNavigation a:hover,
+.newsNavigation .active a{color:#38bc5e}
 
 .content {
 	width:600px;
@@ -114,6 +117,7 @@ a { text-decoration: none}
 .newsList > ul {
 	margin-left:2%;
 	width : 60%;
+	overflow:auto;
 }
 	
 .newsList  img, .newsList > ul  {
@@ -122,6 +126,7 @@ a { text-decoration: none}
 
 .newsList ul li {
 	text-overflow: ellipsis;
+	overflow-x:hidden;
     white-space: nowrap;
 	font-size: 14px;
     margin: 2%;
