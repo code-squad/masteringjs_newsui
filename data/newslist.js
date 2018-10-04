@@ -1,4 +1,4 @@
-export const newslist = [{
+const newslist = [{
 	"company": "KBS",
 	"id": "056",
 	"logoImgUrl": "https://s.pstatic.net/static/newsstand/up/2017/0424/nsd173124306.png",
@@ -89,3 +89,7 @@ export const newslist = [{
 		"text": "이 총리 '방명록으로 가짜뉴스···야비한 짓 멈추시길'"
 	}
 }]
+const getNewsList = () => {
+	return newslist;
+}
+export {getNewsList}
