@@ -69,6 +69,11 @@ a { text-decoration: none}
     margin-bottom: 1%;
 }
 
+.newsNavigation li.selection {
+	color: green;
+	font-weight: bold;
+}
+
 .newsNavigation a:hover {
 	text-decoration: underline;
 }
