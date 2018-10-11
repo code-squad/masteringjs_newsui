@@ -16,8 +16,14 @@ const fnNewsListTemplate = ({logoImgUrl, company, thumbnews:{imageUrl}, thumbnew
          }, "")}
         </ul>
     </div>`
-}
+};
+
+const fnNewsCompanyList = (newsList, selectionNews = newsList[0]) => {
+    return newsList.map((news) => {
+        return `<li ${news.id === selectionNews.id ? 'class="selection"' : ''}>${news.company}</li>`;
+    });
+};
 
 
-export {fnNewsListTemplate}
+export {fnNewsListTemplate, fnNewsCompanyList}
 
