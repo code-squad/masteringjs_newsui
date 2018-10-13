@@ -7,10 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const news = new NewsSection(newslist);
   news.init(fnNewsListTemplate, fnNewsCompanyList);
 
-  newsNavigation.addEventListener('click', function(e) {
-    console.log(e);
+  newsNavigation.addEventListener('click', function({ target }) {
+    const selectedNode = target.nodeName;
+
+    if (!selectedNode === 'LI') return;
+    news.selectNews(target.className);
   });
+
   arrowBtn.addEventListener('click', function(e) {
-    console.log(e);
+    const arrowBtnClassNames = e.target.parentNode.className;
+    const bArrowBtn = arrowBtnClassNames === 'left' || arrowBtnClassNames === 'right';
+    if (!bArrowBtn) return;
   });
 });

@@ -4,16 +4,23 @@ import { fnNewsListTemplate, fnNewsCompanyList } from '../templates/news.js';
 export default class NewsSection {
   constructor(newsList) {
     this.newsList = newsList;
+    this.selectedNews = this.newsList[0];
   }
 
   init(fnNewsListTemplate, fnNewsCompanyList) {
-    const newsList = this.newsList;
-
-    this.renderer(title, fnNewsListTemplate(newsList[0]));
-    this.renderer(newsNavigation, fnNewsCompanyList(newsList));
+    this.renderer(title, fnNewsListTemplate(this.selectedNews));
+    this.renderer(newsNavigation, fnNewsCompanyList(this.newsList));
   }
 
   renderer(target, DOM) {
     target.innerHTML = DOM;
+  }
+
+  findNews() {}
+
+  selectNews(selectedId) {
+    this.selectedNews = this.newsList.find(({ id }) => id === selectedId);
+
+    this.renderer(title, fnNewsListTemplate(this.selectedNews));
   }
 }
