@@ -9,7 +9,30 @@ export default class newsSection {
     }
 
     init(fnNewsListTemplate, fnNewsCompanyList) {
-        $('.content').innerHTML = fnNewsListTemplate(newsList[0]);
-        $('.newsNavigation').innerHTML = fnNewsCompanyList(newsList).join('\n');
+        this.currentIndex = 0;
+
+        newsSection.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
+
+        $('.btn .left a').addEventListener('click', () => {
+            this.currentIndex = newsSection.getNextNewsIndex(this.currentIndex - 1);
+            newsSection.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
+        });
+
+        $('.btn .right a').addEventListener('click', () => {
+            this.currentIndex = newsSection.getNextNewsIndex(this.currentIndex + 1);
+            newsSection.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
+        });
+    }
+
+    static getNextNewsIndex(nextIdx) {
+        const lastIdx = newsList.length - 1;
+        return (nextIdx < 0) ? lastIdx : (nextIdx > lastIdx) ? 0 : nextIdx;
+    }
+
+    static expressNewsContent(currentIndex, fnNewsListTemplate, fnNewsCompanyList) {
+        const targetNews = newsList[currentIndex];
+
+        $('.content').innerHTML = fnNewsListTemplate(targetNews);
+        $('.newsNavigation').innerHTML = fnNewsCompanyList(newsList, targetNews.id).join('\n');
     }
 }
