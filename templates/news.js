@@ -19,8 +19,11 @@ const fnNewsListTemplate = ({logoImgUrl, company, thumbnews:{imageUrl}, thumbnew
 };
 
 const fnNewsCompanyList = (newsList, newsId) => {
-    return newsList.map((news) => {
-        return `<li ${news.id === newsId ? 'class="selection"' : ''}>${news.company}</li>`;
+    return newsList.map((news, index) => {
+        return `<li name="company"
+                    data-news-id="${news.id}"
+                    data-news-index="${index}"
+                    ${news.id === newsId ? 'class="selection"' : ''}>${news.company}</li>`;
     });
 };
 

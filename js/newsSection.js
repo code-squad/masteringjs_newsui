@@ -22,6 +22,15 @@ export default class newsSection {
             this.currentIndex = newsSection.getNextNewsIndex(this.currentIndex + 1);
             newsSection.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
         });
+
+        $('.newsNavigation').addEventListener('click', (evt) => {
+            const target = evt.target;
+
+            if(target.getAttribute('name') === 'company') {
+                this.currentIndex = target.dataset.newsIndex;
+                newsSection.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
+            }
+        });
     }
 
     static getNextNewsIndex(nextIdx) {
