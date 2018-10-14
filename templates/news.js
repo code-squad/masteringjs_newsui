@@ -18,9 +18,9 @@ const fnNewsListTemplate = ({logoImgUrl, company, thumbnews:{imageUrl}, thumbnew
     </div>`
 };
 
-const fnNewsCompanyList = (newsList, selectionNews = newsList[0]) => {
+const fnNewsCompanyList = (newsList, newsId) => {
     return newsList.map((news) => {
-        return `<li ${news.id === selectionNews.id ? 'class="selection"' : ''}>${news.company}</li>`;
+        return `<li ${news.id === newsId ? 'class="selection"' : ''}>${news.company}</li>`;
     });
 };
 
