@@ -13,15 +13,10 @@ export default class newsSection {
 
         this.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
 
-        $('.btn .left a').addEventListener('click', () => {
-            this.currentIndex = this.getNextNewsIndex(this.currentIndex - 1);
-            this.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
-        });
+        $('.btn').addEventListener('click', (evt) => {
+            const nextIdx = this.currentIndex + Number(evt.target.dataset.way);
 
-
-
-        $('.btn .right a').addEventListener('click', () => {
-            this.currentIndex = this.getNextNewsIndex(this.currentIndex + 1);
+            this.currentIndex = this.getNextNewsIndex(nextIdx);
             this.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
         });
 
