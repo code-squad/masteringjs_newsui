@@ -28,6 +28,10 @@ export default class newsSection {
                 this.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
             }
         });
+
+        $('.an_popup_cancel').addEventListener('click', (evt) => {
+            console.log()
+        });
     }
 
     getNextNewsIndex(nextIdx) {
@@ -40,5 +44,9 @@ export default class newsSection {
 
         $('.content').innerHTML = fnNewsListTemplate(targetNews);
         $('.newsNavigation').innerHTML = fnNewsCompanyList(newsList, targetNews.id).join('\n');
+
+        $('#del-news-button').addEventListener('click', () => {
+            $('.an_popup_cancel').classList.remove('hide');
+        });
     }
 }
