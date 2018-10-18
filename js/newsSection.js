@@ -11,16 +11,18 @@ export default class newsSection {
     init(fnNewsListTemplate, fnNewsCompanyList) {
         this.currentIndex = 0;
 
-        newsSection.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
+        this.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
 
         $('.btn .left a').addEventListener('click', () => {
-            this.currentIndex = newsSection.getNextNewsIndex(this.currentIndex - 1);
-            newsSection.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
+            this.currentIndex = this.getNextNewsIndex(this.currentIndex - 1);
+            this.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
         });
 
+
+
         $('.btn .right a').addEventListener('click', () => {
-            this.currentIndex = newsSection.getNextNewsIndex(this.currentIndex + 1);
-            newsSection.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
+            this.currentIndex = this.getNextNewsIndex(this.currentIndex + 1);
+            this.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
         });
 
         $('.newsNavigation').addEventListener('click', (evt) => {
@@ -28,17 +30,17 @@ export default class newsSection {
 
             if(target.getAttribute('name') === 'company') {
                 this.currentIndex = target.dataset.newsIndex;
-                newsSection.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
+                this.expressNewsContent(this.currentIndex, fnNewsListTemplate, fnNewsCompanyList);
             }
         });
     }
 
-    static getNextNewsIndex(nextIdx) {
+    getNextNewsIndex(nextIdx) {
         const lastIdx = newsList.length - 1;
         return (nextIdx < 0) ? lastIdx : (nextIdx > lastIdx) ? 0 : nextIdx;
     }
 
-    static expressNewsContent(currentIndex, fnNewsListTemplate, fnNewsCompanyList) {
+    expressNewsContent(currentIndex, fnNewsListTemplate, fnNewsCompanyList) {
         const targetNews = newsList[currentIndex];
 
         $('.content').innerHTML = fnNewsListTemplate(targetNews);
